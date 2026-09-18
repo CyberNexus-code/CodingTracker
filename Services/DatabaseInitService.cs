@@ -4,7 +4,7 @@ using System.Data.SQLite;
 
 namespace CodingTracker.Services
 {
-    internal class DatabaseInit
+    internal class DatabaseInitService
     {
         public void CreateDirectory()
         {
@@ -28,21 +28,22 @@ namespace CodingTracker.Services
             }
         }
 
-        public void InitTable(SQLiteConnection connection)
+        public void InitTable(string connectionSting)
         {
             try
             {
-                using (connection)
-                {
-                    string query = @"CREATE TABLE IF NOT EXISTS Sessions (
-                                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    Project TEXT NOT NULL,
-                                    StartTime TEXT NOT NULL,
-                                    EndTime TEXT,
-                                    Duration TEXT)";
+                using var connection = new SQLiteConnection(connectionSting);
+                connection.Open();
 
-                    connection.Execute(query);
-                }
+                string query = @"CREATE TABLE IF NOT EXISTS CodingSessions (
+                                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                Project TEXT NOT NULL,
+                                StartTime TEXT NOT NULL,
+                                EndTime TEXT,
+                                Duration INTEGER)";
+
+                connection.Execute(query);
+
             }catch(Exception ex)
             {
                 AnsiConsole.MarkupLine($"[red]Error initializing the database: {ex.Message}[/]");

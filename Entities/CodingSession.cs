@@ -2,12 +2,13 @@
 
 namespace CodingTracker.Entities
 {
-    internal class CodingSession
+    public class CodingSession
     {
-        public int Id { get; private set; }
-        public DateTime StartTime { get; private set; }
-        public DateTime EndTime { get; private set; }
-        public string? Duration { get; private set; }
+        public int Id { get; set; }
+        public string Project { get; set; } = "";
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public int Duration { get; set; }
     }
 
 

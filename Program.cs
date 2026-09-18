@@ -1,19 +1,17 @@
-﻿using CodingTracker;
+﻿using CodingTracker.Configuration;
+using CodingTracker.Repositories;
 using CodingTracker.Services;
-using Spectre.Console;
-using System.Data.SQLite;
-using System.Text.Json;
+using CodingTracker.UI;
 
-string json = File.ReadAllText("appsettings.json");
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-var config = JsonSerializer.Deserialize<AppSettings>(json);
+var config = ConfigurationLoader.Load();
+AppConfig.Initialize(config);
 
-string connectionString = config!.ConnectionString;
-
-SQLiteConnection _connection = new(connectionString);
-
-DatabaseInit database = new();
-
+DatabaseInitService database = new();
 database.CreateDirectory();
-database.InitTable(_connection);
+database.InitTable(config.ConnectionString);
+
+MainMenu.Show();
+
 
