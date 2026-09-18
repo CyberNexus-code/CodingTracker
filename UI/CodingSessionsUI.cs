@@ -75,8 +75,6 @@ namespace CodingTracker.UI
                 return;
             }
 
-            var oldSession = choice.Session;
-
             var project = AnsiConsole.Prompt(new TextPrompt<string>
                 ("Enter a new [bold green]Project name[/] or leave empty to keep same value\nThen press enter to continue:")
                 .AllowEmpty());
@@ -89,14 +87,23 @@ namespace CodingTracker.UI
                 "\nExpected format is: [bold yellow]'MM/DD/YYYY hh:mm:ss:'[/]")
                 .AllowEmpty());
 
+            var updatedProject = string.IsNullOrWhiteSpace(project) ? choice.Session!.Project : project;
+            var updatedStartTime = string.IsNullOrWhiteSpace(startTime) ? choice.Session!.StartTime.ToString() : startTime;
+            var updatedEndTime = string.IsNullOrWhiteSpace(endTime) ? choice.Session!.EndTime.ToString() : endTime;
+
+
+            AnsiConsole.Clear();
+            TitleComponent.Show();
 
             var table = new Table()
                 .AddColumn("")
                 .AddColumn("Current")
+                .AddColumn("")
                 .AddColumn("Upated")
-                .AddRow("Project" ,$"[red]{oldSession.Project}[/] ->", $"[green]{choice.Session.Project}[/]")
-                .AddRow("Start Time" ,$"[red]{oldSession.StartTime}[/] ->", $"[green]{choice.Session.StartTime}[/]")
-                .AddRow("End Time" ,$"[red]{oldSession.EndTime}[/] ->", $"[green]{choice.Session.EndTime}[/]");
+                .AddRow("Project", $"[red]{choice.Session!.Project}[/]", "[darkorange]->[/]", $"[green]{updatedProject}[/]")
+                .AddRow("Start Time", $"[red]{choice.Session.StartTime}[/]", "[darkorange]->[/]", $"[green]{updatedStartTime}[/]")
+                .AddRow("End Time", $"[red]{choice.Session.EndTime}[/]", "[darkorange]->[/]", $"[green]{updatedEndTime}[/]");
+
 
             AnsiConsole.Write(table);
 
@@ -115,7 +122,8 @@ namespace CodingTracker.UI
                 }
             }
 
-            AnsiConsole.MarkupLine($"[bold green]Coding Session Id: {choice.Session!.Id} was successfully updated[/]");
+            AnsiConsole.MarkupLine($"[bold green]Coding Session Id: {choice.Session!.Id} was successfully updated[/]\nPress any key to continue..");
+            Console.ReadKey();
         }
 
         public static void DeleteMenu()

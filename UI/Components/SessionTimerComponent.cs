@@ -27,7 +27,7 @@ namespace CodingTracker.UI.Components
             bool running = true;
 
             AnsiConsole.MarkupLine("Press 'Q' to stop the timer.");
-            while (true)
+            while (running)
             {
                 var endTime = AnsiConsole.Progress()
                      .Columns(
