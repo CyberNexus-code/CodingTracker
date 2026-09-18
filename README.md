@@ -16,16 +16,16 @@ a visual representation of daily coding activity.
 The Coding Calendar provides a visual representation of coding activity
 throughout the year. Each day displays an activity level based on the amount of time spent coding.
 
-![Coding Calendar](screenshots/coding-calendar.png)
+![Coding Calendar](Screenshots/coding-calendar.png)
 
 ### Coding Sessions
 
 Coding sessions can be created, viewed, edited and deleted.
 Sessions can also be tracked using the Session tracker.
 
-![Coding Timer](screenshots/timer.png)
+![Coding Timer](Screenshots/timer.png)
 
-![Edit Session](screenshots/edit-session.png)
+![Edit Session](Screenshots/edit-session.png)
 
 ## Futures 
 
