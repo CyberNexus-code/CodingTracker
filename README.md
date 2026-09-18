@@ -1,10 +1,10 @@
 # Console Coding Tracker
 
 Console Coding Tracker is a C# console application for tracking coding sessions
-and visualizing coding activity throughout the year
+and visualising coding activity throughout the year
 
 The project was built as a learning project to practice C#, .NET, SQLite, Dapper, LINQ,
-Software arcitecure and unit testing.
+Software architecture and unit testing.
 
 One of the main features is a GitHub-inspired Coding Calendar that provides
 a visual representation of daily coding activity.
@@ -20,20 +20,20 @@ throughout the year. Each day displays an activity level based on the amount of 
 
 ### Coding Sessions
 
-Coding sessions can be created, viewed, edited and delted.
+Coding sessions can be created, viewed, edited and deleted.
 Sessions can also be tracked using the Session tracker.
 
 ![Coding Timer](screenshots/timer.png)
 
 ![Edit Session](screenshots/edit-session.png)
 
-## Feutures 
+## Futures 
 
 - Create, edit and delete coding sessions
 - Record project, start time, end time and duration
 - Filter coding sessions by day, week, month and year
 - Sort sessions in ascending or descending order
-- Visualize yearly coding activity with the Coding Calendar
+- Visualise yearly coding activity with the Coding Calendar
 - Calculate coding activity across sessions that span multiple days
 - Store coding session data in SQLite
 - Validate user input
@@ -91,7 +91,7 @@ This project gave me practical experience with:
 - Structuring a C# application using separation of concerns
 - Working with SQLite and SQL
 - Using Dapper for database access
-- Writing parameterized SQL queries
+- Writing parameterised SQL queries
 - Working with LINQ
 - Handling dates, times and date ranges
 - Designing console interfaces with Spectre.Console
